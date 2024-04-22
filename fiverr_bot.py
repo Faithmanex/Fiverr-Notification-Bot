@@ -27,12 +27,12 @@ class FiverrNotificationApp:
         self.delay_entry.grid(row=1, column=1, padx=10, pady=10)
         self.delay_entry.insert(0, "5")
 
-        # self.color_label = ctk.CTkLabel(self.app, text="Color (RGB):")
-        # self.color_label.grid(row=2, column=0, padx=10, pady=10)
+        self.color_label = ctk.CTkLabel(self.app, text="Color (RGB):")
+        self.color_label.grid(row=2, column=0, padx=10, pady=10)
 
-        # self.color_entry = ctk.CTkEntry(self.app, width=200)
-        # self.color_entry.grid(row=2, column=1, padx=10, pady=10)
-        # self.color_entry.insert(0, "193, 74, 131")
+        self.color_entry = ctk.CTkEntry(self.app, width=100)
+        self.color_entry.grid(row=2, column=1, padx=10, pady=10)
+        self.color_entry.insert(0, "193, 74, 131")
 
         self.start_button = ctk.CTkButton(self.app, text="Start", command=self.start_notification)
         self.start_button.grid(row=3, column=0, padx=10, pady=10)
@@ -72,8 +72,8 @@ class FiverrNotificationApp:
         bot_token = '7138871504:AAF5YaH40GYqdLlNNqvEud-uFifvDtTHCqk'
         chat_id = self.chat_id_entry.get()
         message = 'Fiverr Notification!'
-        color = tuple("193, 74, 131")
-        # color = tuple(int(x) for x in self.color_entry.get().split(','))
+        # color = ("193, 74, 131")
+        color = tuple(int(x) for x in self.color_entry.get().split(','))
         timeout = int(self.delay_entry.get())
 
         while self.running: # Use the flag to control the loop
