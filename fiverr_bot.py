@@ -54,14 +54,17 @@ class FiverrNotificationApp:
             self.running = True # Set the flag to true
             self.notification_thread = threading.Thread(target=self.notification_loop)
             self.notification_thread.start()
-            send_telegram_message(self.bot_token, self.chat_id, "Bot Started")
+            send_telegram_message(self.bot_token, self.get_chat_id(), "Bot Started")
 
     def stop_notification(self):
         if self.running: # Check if the notification loop is running
             self.running = False # Set the flag to false to stop the loop
             # Optionally, you can wait for the thread to finish if needed
             # self.notification_thread.join()
-            send_telegram_message(self.bot_token, self.chat_id, "Bot Stopped")
+            send_telegram_message(self.bot_token, self.get_chat_id(), "Bot Stopped")
+
+    def get_chat_id(self):
+        return self.chat_id_entry.get()
 
     def on_close(self):
         """Called when the window is closed."""
